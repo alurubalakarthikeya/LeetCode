@@ -1,16 +1,22 @@
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
-        List<Integer> list = new ArrayList<>();
-        for(int iter = 0;  iter < nums1.length; iter += 1){
-            for(int check = 0; check < nums2.length; check += 1){
-                if(nums1[iter]==nums2[check]&&!list.contains(nums2[check])){
-                    list.add(nums1[iter]);
-                }
+        List<Integer> num1 = new ArrayList<>();
+        List<Integer> num2 = new ArrayList<>();
+        for(int num: nums1){
+            num1.add(num);
+        }
+        for(int num: nums2){
+            num2.add(num);
+        }
+        List<Integer> res = new ArrayList<>();
+        for(int num: num1){
+            if(num2.contains(num) && !res.contains(num)){
+                res.add(num);
             }
         }
-        int[] ans = new int[list.size()];
-        for (int i = 0; i < list.size(); i++) {
-            ans[i] = list.get(i);
+        int[] ans = new int[res.size()];
+        for(int iter = 0; iter < res.size(); iter += 1){
+            ans[iter] = res.get(iter);
         }
         return ans;
     }
