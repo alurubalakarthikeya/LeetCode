@@ -9,7 +9,7 @@
  * }
  */
 class Solution {
-    public static void recursiveDeletion(ListNode curr, ListNode prev, int target){
+   /* public static void recursiveDeletion(ListNode curr, ListNode prev, int target){
         if(curr==null){
             return;
         }
@@ -19,13 +19,26 @@ class Solution {
         } else {
             recursiveDeletion(curr.next, curr, target);
         }
-    }
+    } */
     public ListNode removeElements(ListNode head, int val) {
         while (head != null && head.val == val) {
             head = head.next;
         }
-        if (head == null) return null;
-        recursiveDeletion(head.next, head, val);
+        if (head == null){
+            return null;
+        }
+        ListNode prev = head;
+        ListNode curr = head.next;
+        while(curr!=null){
+            if(curr.val==val){
+                prev.next = curr.next;
+                curr = prev.next;
+            }else{
+                prev = curr;
+                curr = curr.next;
+            }
+        }
+        //recursiveDeletion(head.next, head, val);
         return head;
     }
 }
