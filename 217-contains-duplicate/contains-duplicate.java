@@ -39,7 +39,7 @@ class Solution {
         }
         return false;
            */
-        Set<Integer> seen = new HashSet<>();
+        Set<Integer> seen = new HashSet<>(nums.length * 2);
         for (int num : nums) {
             if (!seen.add(num)) return true;
         }
