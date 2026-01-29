@@ -16,7 +16,6 @@ class Solution {
             }
         }
         return false;
-                */
         Set<Integer> seen = new HashSet<>();
         int left = 0, right = nums.length-1;
         while(left<right){
@@ -37,6 +36,12 @@ class Solution {
             if(seen.contains(nums[left])){
                 return true;
             }
+        }
+        return false;
+           */
+        Set<Integer> seen = new HashSet<>();
+        for (int num : nums) {
+            if (!seen.add(num)) return true;
         }
         return false;
     }
