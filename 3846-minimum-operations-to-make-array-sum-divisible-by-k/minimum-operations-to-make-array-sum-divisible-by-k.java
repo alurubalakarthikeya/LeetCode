@@ -5,9 +5,7 @@ class Solution {
         for(int iter = 0; iter < nums.length; iter += 1){
             sum += nums[iter];
         }
-        int mod = sum % k;
-        int newReq = sum - mod;
-        operations = sum - newReq;
+        operations = sum % k;
         return operations;
     }
 }
