@@ -1,9 +1,29 @@
 class Solution {
     public int maximumProduct(int[] nums) {
-        Arrays.sort(nums);
-        int n = nums.length;
-        int pos = nums[n - 1] * nums[n - 2] * nums[n - 3];
-        int neg = nums[0] * nums[1] * nums[n - 1];
-        return Math.max(pos, neg);
+        int one = Integer.MIN_VALUE;
+        int two = Integer.MIN_VALUE;
+        int three = Integer.MIN_VALUE;
+        int neg1 = Integer.MAX_VALUE;
+        int neg2 = Integer.MAX_VALUE;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] > one){
+                three = two;
+                two = one;
+                one = nums[i];
+            } else if(nums[i] > two){
+                three = two;
+                two = nums[i];
+            } else if(nums[i] > three){
+                three = nums[i];
+            }
+            if(nums[i] < neg1){
+                neg2 = neg1;
+                neg1 = nums[i];
+            } else if(nums[i] < neg2){
+                neg2 = nums[i];
+            }
+
+        }
+        return Math.max(one*two*three, one*neg1*neg2);
     }
 }
